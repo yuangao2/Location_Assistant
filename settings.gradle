@@ -1,0 +1,2 @@
+include ':app', ':crop'
+project(':crop').projectDir = new File('cropper')

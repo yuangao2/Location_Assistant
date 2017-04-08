@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/sersh/Downloads/Android-Image-Cropper-master/cropper/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/sersh/Downloads/Android-Image-Cropper-master/cropper/src/debug/shaders"/></dataSet></merger>

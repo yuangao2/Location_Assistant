@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/sersh/Documents/work/6820 android/zwan.a4/A4/cropper/src/main/assets"/><source path="/Users/sersh/Documents/work/6820 android/zwan.a4/A4/cropper/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/Users/sersh/Documents/work/6820 android/zwan.a4/A4/cropper/src/release/assets"/></dataSet></merger>
