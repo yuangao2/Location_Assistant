@@ -1,9 +1,13 @@
 package com.example.zwan.a4;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -137,5 +141,24 @@ public class FileUploader {
         }
 
         return response;
+    }
+
+    public Bitmap finishpic() throws IOException {
+        Bitmap myBitmap;
+        writer.append(LINE_FEED).flush();
+        writer.append("--" + boundary + "--").append(LINE_FEED);
+        writer.close();
+
+        // checks server's status code first
+        int status = httpConn.getResponseCode();
+        if (status == HttpURLConnection.HTTP_OK) {
+            InputStream input = httpConn.getInputStream();
+            myBitmap = BitmapFactory.decodeStream(input);
+            httpConn.disconnect();
+        } else {
+            throw new IOException("Server returned non-OK status: " + status);
+        }
+
+        return myBitmap;
     }
 }

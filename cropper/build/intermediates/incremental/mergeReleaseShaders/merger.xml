@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/sersh/Documents/work/6820 android/zwan.a4/A4/cropper/src/main/shaders"/></dataSet><dataSet config="release"><source path="/Users/sersh/Documents/work/6820 android/zwan.a4/A4/cropper/src/release/shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\CS\AndroidStudioProjects\Location Assistant\cropper\src\main\shaders"/></dataSet><dataSet config="release"><source path="D:\CS\AndroidStudioProjects\Location Assistant\cropper\src\release\shaders"/></dataSet></merger>

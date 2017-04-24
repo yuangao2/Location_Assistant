@@ -2,13 +2,13 @@ package com.example.zwan.a4;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
+import android.content.SharedPreferences;
 import android.net.Uri;
-import android.provider.MediaStore;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -19,17 +19,17 @@ import android.widget.Toast;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.io.BufferedOutputStream;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.UUID;
 
 
 public class Registration extends AppCompatActivity {
+    public static final int SHOW_RESPONSE = 0;
     private ImageView imageView;
     private EditText usernameEdit;
     private EditText emailEdit;
@@ -39,6 +39,41 @@ public class Registration extends AppCompatActivity {
 
     private EditText familyEdit;
     private EditText invitationEdit;
+
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SHOW_RESPONSE:
+                    String response = (String) msg.obj;
+                    if(response.equals("failemail")){
+                        Toast.makeText(getApplicationContext(), "This email has been used.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(response.equals("failfid")){
+                        Toast.makeText(getApplicationContext(), "Your invitation code is wrong.", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            int uid = jsonObject.getInt("uid");
+                            int fid = jsonObject.getInt("fid");
+                            String invitation = jsonObject.getString("invitation");
+                            Intent intent = new Intent(Registration.this, MainActivity.class);
+                            //intent.putExtra("uid", uid);
+                            //intent.putExtra("fid", fid);
+                            //intent.putExtra("invitation", invitation);
+                            SharedPreferences.Editor editor = getSharedPreferences("user", MODE_PRIVATE).edit();
+                            editor.putInt("uid", uid);
+                            editor.putInt("fid", fid);
+                            editor.putString("invitation", invitation);
+                            editor.commit();
+                            startActivity(intent);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+            }
+        }
+    };
 
 
     public void join(View view){
@@ -88,10 +123,19 @@ public class Registration extends AppCompatActivity {
                                     List<String> response = multipart.finish();
 
                                     System.out.println("SERVER REPLIED:");
-
+                                    System.out.println(response.get(1));
+                                    Message message = new Message();
+                                    message.what = SHOW_RESPONSE;
+                                    message.obj = response.get(1);
+                                    handler.sendMessage(message);
+                                    /*
                                     for (String line : response) {
+                                        if(line.equals("fail")){
+                                            Intent intent = new Intent(Registration.this, MainActivity.class);
+                                            startActivity(intent);
+                                        }
                                         System.out.println(line);
-                                    }
+                                    }*/
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -177,10 +221,15 @@ public class Registration extends AppCompatActivity {
                                     List<String> response = multipart.finish();
 
                                     System.out.println("SERVER REPLIED:");
-
+                                    System.out.println(response.get(1));
+                                    Message message = new Message();
+                                    message.what = SHOW_RESPONSE;
+                                    message.obj = response.get(1);
+                                    handler.sendMessage(message);
+                                    /*
                                     for (String line : response) {
                                         System.out.println(line);
-                                    }
+                                    }*/
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

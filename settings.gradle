@@ -1,2 +1,2 @@
-include ':app', ':crop'
+include ':app', ':crop', 'marker'
 project(':crop').projectDir = new File('cropper')
