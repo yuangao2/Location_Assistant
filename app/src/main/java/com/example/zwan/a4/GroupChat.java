@@ -29,6 +29,7 @@ public class GroupChat extends AppCompatActivity {
 
     private int uid;
     private int fid;
+    private String pic;
     private long currentTime;
 
     private Handler handler = new Handler() {
@@ -36,16 +37,22 @@ public class GroupChat extends AppCompatActivity {
             switch (msg.what) {
                 case SHOW_RESPONSE:
                     String response = (String) msg.obj;
-                    Log.e("response", response);
+                    Log.e("message", response);
                     try {
                         JSONArray jsonArray = new JSONArray(response);
                         for (int i = 0; i < jsonArray.length(); ++i) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             int thisuid = jsonObject.getInt("UId");
                             String content = jsonObject.getString("Content");
-                            currentTime = jsonObject.getLong("Time");
-                            Msg message = new Msg(content, Msg.TYPE_RECEIVED);
-                            msgList.add(message);
+                            currentTime = jsonObject.getLong("4");
+                            String picture = jsonObject.getString("Picture");
+                            Log.e("content", content );
+                            Log.e("time", String.valueOf(currentTime) );
+                            Log.e("pic", picture );
+                            if(thisuid!=uid) {
+                                Msg message = new Msg(content, Msg.TYPE_RECEIVED, picture);
+                                msgList.add(message);
+                            }
                             //refresh adapter when there is a new message
                             adapter.notifyDataSetChanged();
                             //scroll ListView to last roll
@@ -68,6 +75,7 @@ public class GroupChat extends AppCompatActivity {
         currentTime = System.currentTimeMillis();
         uid = pref.getInt("uid", 0);
         fid = pref.getInt("fid", 0);
+        pic = pref.getString("pic", "");
 
         adapter = new MsgAdapter(GroupChat.this, R.layout.msg_item_layout, msgList);
         inputText = (EditText)findViewById(R.id.input_text);
@@ -79,7 +87,7 @@ public class GroupChat extends AppCompatActivity {
             public void onClick(View v) {
                 final String content = inputText.getText().toString();
                 if(!"".equals(content)){
-                    Msg msg = new Msg(content, Msg.TYPE_SENT);
+                    Msg msg = new Msg(content, Msg.TYPE_SENT, pic);
                     msgList.add(msg);
                     //refresh adapter when there is a new message
                     adapter.notifyDataSetChanged();
@@ -97,8 +105,8 @@ public class GroupChat extends AppCompatActivity {
                                 multipart.addFormField("content", content);
                                 multipart.addFormField("uid", String.valueOf(uid));
                                 multipart.addFormField("fid", String.valueOf(fid));
-                                currentTime = System.currentTimeMillis();
-                                multipart.addFormField("time", Long.toString(currentTime));
+                                //currentTime = System.currentTimeMillis();
+                                multipart.addFormField("time", Long.toString(System.currentTimeMillis()));
 
                                 List<String> response = multipart.finish();
 

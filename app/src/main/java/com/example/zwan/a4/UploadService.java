@@ -56,7 +56,7 @@ public class UploadService extends Service {
 
         Notification notification = new Notification.Builder(getApplicationContext())
                 .setContentTitle(getString(R.string.app_name))
-                .setContentText("Family Locator is working.")
+                .setContentText("Location Assistant is working.")
                 .setSmallIcon(R.drawable.location)
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(contentIntent)

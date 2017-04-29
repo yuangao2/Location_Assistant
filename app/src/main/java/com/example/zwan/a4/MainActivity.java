@@ -10,11 +10,13 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -33,6 +35,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -40,6 +48,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterItem;
@@ -59,7 +68,19 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, ClusterManager.OnClusterClickListener<Person>, ClusterManager.OnClusterInfoWindowClickListener<Person>, ClusterManager.OnClusterItemClickListener<Person>, ClusterManager.OnClusterItemInfoWindowClickListener<Person>{
+        implements NavigationView.OnNavigationItemSelectedListener,
+        OnMapReadyCallback,
+        ClusterManager.OnClusterClickListener<Person>,
+        ClusterManager.OnClusterInfoWindowClickListener<Person>,
+        ClusterManager.OnClusterItemClickListener<Person>,
+        ClusterManager.OnClusterItemInfoWindowClickListener<Person>,
+        LocationListener,
+        ResultCallback,
+        GoogleMap.OnMapClickListener,
+        GoogleMap.OnMarkerClickListener,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener
+{
 
     public static final int SHOW_RESPONSE = 0;
     public static final int SHOW_PIC = 1;
@@ -72,17 +93,32 @@ public class MainActivity extends AppCompatActivity
     private int flag=0;
     private Map<Integer, Bitmap> pics = new HashMap<Integer, Bitmap>();
     private Map<Integer, String> names = new HashMap<Integer, String>();
-    private int currentUId;
+    //private int currentUId;
+    private GoogleApiClient googleApiClient;
     //private ArrayList<Target> targetArrayList = new ArrayList<Target>();
+    private static final String TAG = MapsActivity.class.getSimpleName();
+    private Marker geoFenceMarker;
 
 
     private ClusterManager<Person> mClusterManager;
+
+    private void createGoogleApi() {
+        Log.d(TAG, "createGoogleApi()");
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(this)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .build();
+        }
+    }
+
 
     @Override
     public boolean onClusterClick(Cluster<Person> cluster) {
         // Show a toast with some info when the cluster is clicked.
         String firstName = cluster.getItems().iterator().next().name;
-        Toast.makeText(this, cluster.getSize() + " (including " + firstName + ")", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, cluster.getSize() + " (including " + firstName + ")", Toast.LENGTH_SHORT).show();
 
         // Zoom in the cluster. Need to create LatLngBounds and including all the cluster items
         // inside of bounds, then animate to center of the bounds.
@@ -106,18 +142,72 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Call GoogleApiClient connection when starting the Activity
+        googleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        // Disconnect GoogleApiClient when stopping Activity
+        googleApiClient.disconnect();
+    }
+
+    @Override
     public void onClusterInfoWindowClick(Cluster<Person> cluster) {
 
     }
 
     @Override
     public boolean onClusterItemClick(Person item) {
+
         return false;
     }
 
     @Override
     public void onClusterItemInfoWindowClick(Person item) {
+        Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+        intent.putExtra("uid", item.getUId());
+        startActivity(intent);
+    }
 
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onResult(@NonNull Result result) {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
     }
 
     private class PersonRenderer extends DefaultClusterRenderer<Person> {
@@ -239,7 +329,7 @@ public class MainActivity extends AppCompatActivity
                             final String pic = jsonObject.getString("Picture");
                             String name = jsonObject.getString("Username");
                             names.put(thisuid, name);
-                            Log.e(String.valueOf(currentUId), pic);
+                            //Log.e(String.valueOf(currentUId), pic);
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -327,6 +417,9 @@ public class MainActivity extends AppCompatActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        createGoogleApi();
+        Intent intent1 = new Intent(this, RegistrationService.class);
+        startService(intent1);
 
         final Handler handlerdelay=new Handler();
         handlerdelay.postDelayed(new Runnable() {
@@ -350,7 +443,7 @@ public class MainActivity extends AppCompatActivity
                             for (String line : response) {
                                 Log.e("response", line);
                             }*/
-                            System.out.println(response.get(1));
+                            //System.out.println(response.get(1));
                             //Log.e("response", response.get(1));
                             Message message = new Message();
                             message.what = SHOW_RESPONSE;
@@ -436,6 +529,12 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Copied invitation code to clipboard.", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_map) {
 
+        } else if (id == R.id.nav_history) {
+
+        } else if (id == R.id.nav_geofence) {
+            Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_message) {
             Intent intent = new Intent(MainActivity.this, GroupChat.class);
             startActivity(intent);
@@ -476,6 +575,7 @@ public class MainActivity extends AppCompatActivity
         mClusterManager = new ClusterManager<Person>(this, mMap);
         mClusterManager.setRenderer(new PersonRenderer());
         mMap.setOnCameraIdleListener(mClusterManager);
+        mMap.setOnMapClickListener(this);
         mMap.setOnMarkerClickListener(mClusterManager);
         mMap.setOnInfoWindowClickListener(mClusterManager);
         mClusterManager.setOnClusterClickListener(this);

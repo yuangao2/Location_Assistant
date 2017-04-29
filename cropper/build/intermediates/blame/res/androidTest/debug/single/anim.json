@@ -1,42 +1,82 @@
 [
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_fade_in.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_popup_exit.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_fade_out.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_slide_in_top.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
         "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
         "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_popup_enter.xml"
     },
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_slide_out_bottom.xml"
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_slide_out_top.xml"
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
         "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
         "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\anim\\abc_fade_out.xml"
     }
 ]

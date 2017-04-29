@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,6 +36,8 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewholder.rightLayout = (LinearLayout)view.findViewById(R.id.right_layout);
             viewholder.leftMsg = (TextView)view.findViewById(R.id.left_text);
             viewholder.rightMsg = (TextView)view.findViewById(R.id.right_text);
+            viewholder.leftImg = (ImageView) view.findViewById(R.id.image_left);
+            viewholder.rightImg = (ImageView) view.findViewById(R.id.image_right);
             view.setTag(viewholder);
         }
         else {
@@ -44,11 +49,13 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
             viewholder.leftLayout.setVisibility(View.VISIBLE);
             viewholder.rightLayout.setVisibility(View.GONE);
             viewholder.leftMsg.setText(msg.getContent());
+            Picasso.with(getContext()).load("https://people.cs.clemson.edu/~zwan/android/"+msg.getImage()).resize(200,200).into(viewholder.leftImg);
         }
         else if(msg.getType() == Msg.TYPE_SENT){
             viewholder.rightLayout.setVisibility(View.VISIBLE);
             viewholder.leftLayout.setVisibility(View.GONE);
             viewholder.rightMsg.setText(msg.getContent());
+            Picasso.with(getContext()).load("https://people.cs.clemson.edu/~zwan/android/"+msg.getImage()).resize(200,200).into(viewholder.rightImg);
         }
         return view;
     }
@@ -58,5 +65,7 @@ public class MsgAdapter extends ArrayAdapter<Msg> {
         LinearLayout rightLayout;
         TextView leftMsg;
         TextView rightMsg;
+        ImageView leftImg;
+        ImageView rightImg;
     }
 }

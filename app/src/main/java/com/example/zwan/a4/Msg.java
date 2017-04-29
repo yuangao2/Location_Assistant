@@ -8,10 +8,12 @@ public class Msg {
     public static final int TYPE_SENT = 1;
     private String content;
     private int type;
+    private String image;
 
-    public Msg(String content, int type){
+    public Msg(String content, int type, String image){
         this.content = content;
         this.type = type;
+        this.image = image;
     }
 
     public String getContent(){
@@ -20,5 +22,9 @@ public class Msg {
 
     public int getType(){
         return type;
+    }
+
+    public String getImage(){
+        return image;
     }
 }

@@ -11,13 +11,21 @@
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Copy Invitation" />
         <item
+            android:id="@+id/nav_history"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="History" />
+        <item
+            android:id="@+id/nav_geofence"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="Geofence" />
+        <item
             android:id="@+id/nav_message"
             android:icon="@android:drawable/ic_dialog_email"
             android:title="Message" />
         <item
             android:id="@+id/nav_info"
             android:icon="@android:drawable/ic_menu_compass"
-            android:title="Activity Info" />
+            android:title="Location Information" />
     </group>
 
     <!--<item android:title="Communicate">-->

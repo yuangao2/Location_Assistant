@@ -9,8 +9,14 @@
         android:id="@+id/left_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:background="@drawable/left1">
+        android:layout_gravity="left">
+        <ImageView
+            android:id="@+id/image_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/cast_album_art_placeholder"/>
 
         <TextView
             android:id="@+id/left_text"
@@ -18,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:background="@drawable/left1"/>
 
     </LinearLayout>
 
@@ -26,8 +33,7 @@
         android:id="@+id/right_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:background="@drawable/right1">
+        android:layout_gravity="right">
 
         <TextView
             android:id="@+id/right_text"
@@ -35,7 +41,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:background="@drawable/right1"/>
+        <ImageView
+            android:id="@+id/image_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dip"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/cast_album_art_placeholder"/>
 
     </LinearLayout>
 

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\CS\AndroidStudioProjects\Location Assistant\cropper\src\main\shaders"/></dataSet><dataSet config="debug"><source path="D:\CS\AndroidStudioProjects\Location Assistant\cropper\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\CS\AndroidStudioProjects\Sample Projects\2.P3.code\Location Assistant\cropper\src\main\shaders"/></dataSet><dataSet config="debug"><source path="D:\CS\AndroidStudioProjects\Sample Projects\2.P3.code\Location Assistant\cropper\src\debug\shaders"/></dataSet></merger>

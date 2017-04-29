@@ -21,6 +21,9 @@ public class Person implements ClusterItem {
         profilePhoto = picture;
         mPosition = position;
     }
+    public int getUId(){
+        return uid;
+    }
     @Override
     public LatLng getPosition() {
         return mPosition;
