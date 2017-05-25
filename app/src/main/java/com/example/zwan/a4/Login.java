@@ -34,6 +34,7 @@ public class Login extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             int uid = jsonObject.getInt("uid");
                             int fid = jsonObject.getInt("fid");
+                            // String username = jsonObject.getString("");
                             String invitation = jsonObject.getString("invitation");
                             Intent intent = new Intent(Login.this, MainActivity.class);
                             //intent.putExtra("uid", uid);
@@ -42,6 +43,7 @@ public class Login extends AppCompatActivity {
                             SharedPreferences.Editor editor = getSharedPreferences("user", MODE_PRIVATE).edit();
                             editor.putInt("uid", uid);
                             editor.putInt("fid", fid);
+                            // editor.putString("username", username);
                             editor.putString("invitation", invitation);
                             editor.commit();
                             startActivity(intent);

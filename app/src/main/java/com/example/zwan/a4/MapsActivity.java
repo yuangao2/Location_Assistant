@@ -1,11 +1,16 @@
 package com.example.zwan.a4;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +18,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -35,6 +42,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
+import static com.google.android.gms.location.Geofence.NEVER_EXPIRE;
+
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,
         LocationListener,
@@ -45,8 +70,15 @@ public class MapsActivity extends FragmentActivity implements
         GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = MapsActivity.class.getSimpleName();
+    public static final int CONNECTION_TIMEOUT=10000;
+    public static final int READ_TIMEOUT=15000;
     private GoogleMap mMap;
     private GoogleApiClient googleApiClient;
+    private Context mContext;
+    private int uid;
+    private int fid;
+    private String userName;
+    HttpRequest httpRequest;
 
     private void createGoogleApi() {
         Log.d(TAG, "createGoogleApi()");
@@ -63,11 +95,17 @@ public class MapsActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SharedPreferences pref = getSharedPreferences("user", MODE_PRIVATE);
+        uid = pref.getInt("uid", 0);
+        fid = pref.getInt("fid", 0);
+        userName = pref.getString("name", "y");
+        Log.d(TAG, "uid:" + String.valueOf(uid) + "username: " + userName);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         createGoogleApi();
+        mContext = this;
         Intent intent = new Intent(this, RegistrationService.class);
         startService(intent);
     }
@@ -103,7 +141,6 @@ public class MapsActivity extends FragmentActivity implements
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
         mMap.setOnMarkerClickListener(this);
-
     }
 
     @Override
@@ -136,15 +173,45 @@ public class MapsActivity extends FragmentActivity implements
     private void drawGeofence() {
         Log.d(TAG, "drawGeofence()");
 
-        if ( geoFenceLimits != null )
-            geoFenceLimits.remove();
-
+        // if ( geoFenceLimits != null )
+            // geoFenceLimits.remove();
         CircleOptions circleOptions = new CircleOptions()
                 .center( geoFenceMarker.getPosition())
                 .strokeColor(Color.argb(50, 70,70,70))
                 .fillColor( Color.argb(100, 150,150,150) )
                 .radius( GEOFENCE_RADIUS );
         geoFenceLimits = mMap.addCircle( circleOptions );
+    }
+
+    private List<Marker> geoFenceList = new ArrayList<Marker>();
+    private void loadGeofence() {
+        Log.d(TAG, "Load Geofence");
+        Uri.Builder builder = new Uri.Builder()
+                .appendQueryParameter("UId", String.valueOf(uid));
+        String query = builder.build().getEncodedQuery();
+        String response;
+        httpRequest = new HttpRequest();
+        try {
+            response = httpRequest.execute("https://people.cs.clemson.edu/~yuang/cpsc6820/Project/get_place.php", query).get();
+            Log.d(TAG, "Get Geofence Response: " + response);
+            JSONArray jsonArray = new JSONArray(response);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                int pid = jsonObject.getInt("PId");
+                String place = jsonObject.getString("Place");
+                double latitude = jsonObject.getDouble("Latitude");
+                double longitude = jsonObject.getDouble("Longitude");
+                LatLng placeLatLng = new LatLng(latitude, longitude);
+                markerForGeofence(placeLatLng, place);
+                drawGeofence();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -169,39 +236,143 @@ public class MapsActivity extends FragmentActivity implements
             locationMarker = mMap.addMarker(markerOptions);
             float zoom = 14f;
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
-            mMap.animateCamera(cameraUpdate);
+            mMap.moveCamera(cameraUpdate);
         }
     }
 
     private Marker geoFenceMarker;
     // Create a marker for the geofence creation
-    private void markerForGeofence(LatLng latLng) {
+    private void markerForGeofence(LatLng latLng, String place) {
         Log.i(TAG, "markerForGeofence("+latLng+")");
-        String title = latLng.latitude + ", " + latLng.longitude;
-        // Define marker options
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(latLng)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
-                .title(title);
-        if ( mMap!=null ) {
-            // Remove last geoFenceMarker
-            if (geoFenceMarker != null)
-                geoFenceMarker.remove();
-
-            geoFenceMarker = mMap.addMarker(markerOptions);
+        if (userName != null) {
+            String title = userName + "'s " + place;
+            // Define marker options
+            MarkerOptions markerOptions = new MarkerOptions()
+                    .position(latLng)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                    .title(title);
+            if (mMap != null) {
+                geoFenceMarker = mMap.addMarker(markerOptions);
+                startGeofence(geoFenceMarker);
+            }
         }
     }
-    @Override
-    public void onMapClick(LatLng latLng) {
-        Log.d(TAG, "onMapClick("+latLng +")");
-        markerForGeofence(latLng);
-        startGeofence();
+
+    public void addGeofenceDB(LatLng latlng, String place) {
+        Log.d(TAG, "Add Geofence Database: " + place);
+        Uri.Builder builder = new Uri.Builder()
+                .appendQueryParameter("UId", String.valueOf(uid))
+                .appendQueryParameter("Latitude", String.valueOf(latlng.latitude))
+                .appendQueryParameter("Longitude", String.valueOf(latlng.longitude))
+                .appendQueryParameter("Place", place);
+        String query = builder.build().getEncodedQuery();
+        String response;
+        try {
+            response = new HttpRequest().execute("https://people.cs.clemson.edu/~yuang/cpsc6820/Project/add_place.php", query).get();
+            Log.d(TAG, "Add Geofence Response: " + response);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeGeofenceDB(LatLng latlng){
+        Log.d(TAG, "Delete Geofence Database: " + String.valueOf(latlng));
+        Uri.Builder builder = new Uri.Builder()
+                .appendQueryParameter("UId", String.valueOf(uid))
+                .appendQueryParameter("Latitude", String.valueOf(latlng.latitude))
+                .appendQueryParameter("Longitude", String.valueOf(latlng.longitude));
+        String query = builder.build().getEncodedQuery();
+        String response;
+        try {
+            response = new HttpRequest().execute("https://people.cs.clemson.edu/~yuang/cpsc6820/Project/remove_place.php", query).get();
+            Log.d(TAG, "Remove Geofence Response: " + response);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public boolean onMarkerClick(Marker marker) {
+    public void onMapClick(LatLng latLng) {
+        final LatLng latlng = latLng;
+        Log.d(TAG, "onMapClick("+latLng +")");
+        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+        final EditText input = new EditText(this);
+        input.setHint("New Place for Geofence");
+        builder.setTitle("Add Geofence");
+        builder.setMessage("Do you want to add this location?");
+        builder.setView(input);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(input.getText().toString().equals("")) {
+                    Toast.makeText(mContext, "Playlist name cannot be empty", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    String placeName = input.getText().toString();
+                    markerForGeofence(latlng, placeName);
+                    addGeofenceDB(latlng, placeName);
+                    // startGeofence();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+//        markerForGeofence(latLng);
+//        startGeofence();
+    }
+
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
         Log.d(TAG, "onMarkerClickListener: " + marker.getPosition());
-        return false;
+        final Marker mMarker = marker;
+        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+        builder.setTitle("Delete Geofence: " + marker.getTitle());
+        builder.setMessage("Do you want delete to this location?");
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                LocationServices.GeofencingApi.removeGeofences(
+                        googleApiClient,
+                        // This is the same pending intent that was used in addGeofences().
+                        geoFencePendingIntent
+                ).setResultCallback(MapsActivity.this); // Result processed in onResult().
+                mMarker.remove();
+                LatLng latlng = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
+                removeGeofenceDB(latlng);
+                // Toast.makeText(mContext, ""+ marker.getId(), Toast.LENGTH_SHORT).show();
+//                if(input.getText().toString().equals("")) {
+//                    Toast.makeText(mContext, "Playlist name cannot be empty", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    String placeName = input.getText().toString();
+//                    markerForGeofence(latlng, placeName);
+//                    addGeofenceDB(latlng, placeName);
+//                    // startGeofence();
+//                }
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        return true;
     }
 
     // Get last known location
@@ -232,8 +403,10 @@ public class MapsActivity extends FragmentActivity implements
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(UPDATE_INTERVAL)
                 .setFastestInterval(FASTEST_INTERVAL);
-        if ( checkPermission() )
+        if ( checkPermission() ) {
             LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+            loadGeofence();
+        }
     }
 
 
@@ -278,15 +451,15 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     // Create a Geofence
-    private static final long GEO_DURATION = 60 * 60 * 1000;
-    private static final String GEOFENCE_REQ_ID = "My Geofence";
+    // private static final long GEO_DURATION = 60 * 60 * 1000;
+    // private static final String GEOFENCE_REQ_ID = "My Geofence";
     private static final float GEOFENCE_RADIUS = 500.0f; // in meters
-    private Geofence createGeofence(LatLng latLng, float radius ) {
+    private Geofence createGeofence(LatLng latLng, float radius, String geofenceId ) {
         Log.d(TAG, "createGeofence");
         return new Geofence.Builder()
-                .setRequestId(GEOFENCE_REQ_ID)
+                .setRequestId(geofenceId)
                 .setCircularRegion( latLng.latitude, latLng.longitude, radius)
-                .setExpirationDuration( GEO_DURATION )
+                .setExpirationDuration(  NEVER_EXPIRE )
                 .setTransitionTypes( Geofence.GEOFENCE_TRANSITION_ENTER
                         | Geofence.GEOFENCE_TRANSITION_EXIT )
                 .build();
@@ -320,10 +493,10 @@ public class MapsActivity extends FragmentActivity implements
             LocationServices.GeofencingApi.addGeofences(googleApiClient, request, geoFencePendingIntent).setResultCallback(this);
     }
     // Start Geofence creation process
-    private void startGeofence() {
+    private void startGeofence(Marker marker) {
         Log.i(TAG, "startGeofence()");
-        if( geoFenceMarker != null ) {
-            Geofence geofence = createGeofence( geoFenceMarker.getPosition(), GEOFENCE_RADIUS );
+        if( marker != null ) {
+            Geofence geofence = createGeofence( marker.getPosition(), GEOFENCE_RADIUS, marker.getTitle() );
             GeofencingRequest geofenceRequest = createGeofenceRequest( geofence );
             addGeofence( geofenceRequest );
         } else {
@@ -334,7 +507,76 @@ public class MapsActivity extends FragmentActivity implements
     static Intent makeNotificationIntent(Context geofenceService, String msg)
     {
         Log.d(TAG,msg);
-        return new Intent(geofenceService,MapsActivity.class);
+        return new Intent(geofenceService, MapsActivity.class);
     }
 
+    public static class HttpRequest extends AsyncTask<String, String, String> {
+        HttpURLConnection conn;
+        URL url = null;
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                // Enter URL address where your php file resides
+                url = new URL(params[0]);
+            }
+            catch (MalformedURLException e) {
+                e.printStackTrace();
+                return "MalformedURLException";
+            }
+
+            try {
+                // Setup HttpURLConnection class to send and receive data from php and mysql
+                conn = (HttpURLConnection)url.openConnection();
+                conn.setReadTimeout(READ_TIMEOUT);
+                conn.setConnectTimeout(CONNECTION_TIMEOUT);
+                conn.setRequestMethod("POST");
+
+                // setDoInput and setDoOutput method depict handling of both send and receive
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                PrintWriter pw = new PrintWriter(conn.getOutputStream());
+                pw.print(params[1]);
+                pw.flush();
+                pw.close();
+                conn.connect();
+            }
+            catch (IOException e1) {
+                e1.printStackTrace();
+                return "IOException";
+            }
+
+            try {
+                int response_code = conn.getResponseCode();
+
+                // Check if successful connection made
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    // Read data sent from server
+                    InputStream input = conn.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+                    }
+
+                    // Pass data to onPostExecute method
+                    return(result.toString());
+
+                }
+                else{
+                    return("unsuccessful");
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+                return "IOException";
+            }
+            finally {
+                conn.disconnect();
+            }
+        }
+    }
 }

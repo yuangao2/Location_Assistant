@@ -25,7 +25,8 @@
 
         <activity
             android:name=".Login"
-            android:label="Location Assistant">
+            android:label="Location Assistant"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,21 +35,31 @@
         </activity>
         <activity
             android:name=".Registration"
-            android:label="Register" />
+            android:label="Register"
+            android:launchMode="singleTask"/>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity
             android:name=".MainActivity"
             android:label="Current Location"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".LocationInfoActivity"
-            android:label="Location Information" />
+            android:label="Location Information"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".GroupChat"
-            android:label="Group Chat" />
+            android:label="Group Chat"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.my.click" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <receiver android:name=".BatteryLevelReceiver">
             <intent-filter>

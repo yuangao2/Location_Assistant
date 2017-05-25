@@ -1,10 +1,10 @@
 [
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\menu\\crop_image_menu.xml",
-        "source": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\src\\main\\res\\menu\\crop_image_menu.xml"
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\menu\\crop_image_menu.xml",
+        "source": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\src\\main\\res\\menu\\crop_image_menu.xml"
     },
     {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\menu\\crop_image_menu.xml",
-        "source": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\src\\main\\res\\menu\\crop_image_menu.xml"
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\menu\\crop_image_menu.xml",
+        "source": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\src\\main\\res\\menu\\crop_image_menu.xml"
     }
 ]

@@ -135,7 +135,7 @@ public class GeofenceTransitionService extends IntentService {
         // String response;
 
         try {
-            url = new URL("https://people.cs.clemson.edu/~yuang/cpsc6820/Test/gcm.php");
+            url = new URL("https://people.cs.clemson.edu/~yuang/cpsc6820/Project/gcm.php");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -153,15 +153,6 @@ public class GeofenceTransitionService extends IntentService {
             conn.setDoOutput(true);
 
             // Open connection for sending data
-                /*
-                OutputStream os = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
-                writer.write(query);
-                writer.flush();
-                writer.close();
-                os.close();
-                */
             PrintWriter pw = new PrintWriter(conn.getOutputStream());
             pw.print(query);
             pw.flush();

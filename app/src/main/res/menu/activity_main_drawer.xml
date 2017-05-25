@@ -3,29 +3,30 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_map"
-            android:icon="@android:drawable/ic_dialog_map"
-            android:title="Current Location" />
-        <item
             android:id="@+id/nav_copy"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Copy Invitation" />
         <item
-            android:id="@+id/nav_history"
-            android:icon="@android:drawable/ic_menu_myplaces"
-            android:title="History" />
+            android:id="@+id/nav_map"
+            android:icon="@android:drawable/ic_dialog_map"
+            android:title="Current Location" />
         <item
             android:id="@+id/nav_geofence"
-            android:icon="@android:drawable/ic_menu_myplaces"
+            android:icon="@drawable/ic_pin_drop_black_24dp"
             android:title="Geofence" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_restore_black_24dp"
+            android:title="Location History" />
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_gps_fixed_black_24dp"
+            android:title="Location Information" />
         <item
             android:id="@+id/nav_message"
             android:icon="@android:drawable/ic_dialog_email"
             android:title="Message" />
-        <item
-            android:id="@+id/nav_info"
-            android:icon="@android:drawable/ic_menu_compass"
-            android:title="Location Information" />
+
     </group>
 
     <!--<item android:title="Communicate">-->

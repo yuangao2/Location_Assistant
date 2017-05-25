@@ -1,74 +1,74 @@
 [
     {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
-        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_switch_track.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_default.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
-        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_switch_track.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_spinner.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
-        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_btn_checkable.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
-        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_edittext.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_edittext.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
-        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_color_highlight_material.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
-        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_spinner.xml"
-    },
-    {
-        "merged": "D:\\CS\\AndroidStudioProjects\\Sample Projects\\2.P3.code\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
-        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_btn_checkable.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
-        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_default.xml"
-    },
-    {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
         "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_default.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
         "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_default.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "D:\\Users\\sersh\\Downloads\\Location Assistant-1\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
+        "source": "D:\\Users\\sersh\\.android\\build-cache\\5fe7ded54b34cbc4da66e5abf3c652921828e70d\\output\\res\\color-v23\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "D:\\CS\\AndroidStudioProjects\\Location Assistant\\cropper\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\Yuan\\.android\\build-cache\\9bb284630a40a302b05be209448d877d41ca8da9\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
     }
 ]
