@@ -1,0 +1,2 @@
+# Location_Assistant
+The app provides real time location data. It allows parents to monitor the children’s location and activity with GPS tracking technology. The real-time locations of the family members within the same group are displayed on a map. When a monitored user reaches a certain location, such as school or home, the app provides automatic notifications to the guardian user. A built-in message system allows all users within the same group to send messages to each other without accessing SMS.
